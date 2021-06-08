@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import BlogList from '../components/Blogs/BlogList'
+import EventItem from '../components/Event/EventItem'
 import Footer from '../components/footer'
 import Header from '../components/Header'
 // import styles from '../styles/Home.module.css'
@@ -46,27 +48,7 @@ export default function Home() {
               </div>
             </div>
             <div className="blogwrapper">
-              <div data-w-id="cdcfd309-e48b-a6e7-b265-556ba07f164c" className="blogitem _1"><img src="images/blogImage.png" loading="lazy" width="345" alt="" className="blogimage"/>
-                <div className="blogcontent">
-                  <h1 className="blogtitle">Application for Advertised Course/ Staff form Request</h1>
-                  <div className="text-block-2">17th June 2021</div>
-                  <div className="blogdescription">This is some text inside of a dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt adipiscing elit, sed do eiusmod tempor incididunt .iv block.</div>
-                </div>
-              </div>
-              <div data-w-id="cdcfd309-e48b-a6e7-b265-556ba07f164c" className="blogitem _1"><img src="images/blogImage.png" loading="lazy" width="345" alt="" className="blogimage"/>
-                <div className="blogcontent">
-                  <h1 className="blogtitle">Application for Advertised Course/ Staff form Request</h1>
-                  <div className="text-block-2">17th June 2021</div>
-                  <div className="blogdescription">This is some text inside of a dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt adipiscing elit, sed do eiusmod tempor incididunt .iv block.</div>
-                </div>
-              </div>
-              <div data-w-id="cdcfd309-e48b-a6e7-b265-556ba07f164c" className="blogitem _1"><img src="images/blogImage.png" loading="lazy" width="345" alt="" className="blogimage"/>
-                <div className="blogcontent">
-                  <h1 className="blogtitle">Application for Advertised Course/ Staff form Request</h1>
-                  <div className="text-block-2">17th June 2021</div>
-                  <div className="blogdescription">This is some text inside of a dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt adipiscing elit, sed do eiusmod tempor incididunt .iv block.</div>
-                </div>
-              </div>
+              <BlogList/>
             </div>
             </div>
             <div className="events">
@@ -75,41 +57,11 @@ export default function Home() {
               <div className="eventlist">
                 <div className="eventlistwrapper">
                   <h1 className="eventtitle">Upcoming Events</h1>
-                  <div className="eventitem">
-                    <div className="eventdate">
-                      <h4 className="dateinmonth">1</h4>
-                      <h4 className="dateinmonth dateday">March</h4>
-                    </div>
-                    <h3 className="eventdescription">NACOS Dinner</h3>
-                  </div>
-                  <div className="eventitem">
-                    <div className="eventdate">
-                      <h4 className="dateinmonth">1</h4>
-                      <h4 className="dateinmonth dateday">March</h4>
-                    </div>
-                    <h3 className="eventdescription">020 vs 022 Novelty match</h3>
-                  </div>
-                  <div className="eventitem">
-                    <div className="eventdate">
-                      <h4 className="dateinmonth">1</h4>
-                      <h4 className="dateinmonth dateday">March</h4>
-                    </div>
-                    <h3 className="eventdescription">020 vs 022 Novelty match</h3>
-                  </div>
-                  <div className="eventitem">
-                    <div className="eventdate">
-                      <h4 className="dateinmonth">1</h4>
-                      <h4 className="dateinmonth dateday">March</h4>
-                    </div>
-                    <h3 className="eventdescription">020 vs 022 Novelty match</h3>
-                  </div>
-                  <div className="eventitem">
-                    <div className="eventdate">
-                      <h4 className="dateinmonth">1</h4>
-                      <h4 className="dateinmonth dateday">March</h4>
-                    </div>
-                    <h3 className="eventdescription">020 vs 022 Novelty match</h3>
-                  </div>
+                  <br/>
+                  <EventItem date={1} month={"Feb"} description="020 vs 022 Novelty match" />
+                  <EventItem date={19} month={"Jun"} description="020 vs 022 Novelty match"/>
+                  <EventItem date={1} month={"Jun"} description="020 vs 022 Novelty match"/>
+                  <EventItem date={1} month={"Jun"} description="020 vs 022 Novelty match"/>
                   <a href="#" className="eventseemore">See More</a>
                 </div>
               </div>
