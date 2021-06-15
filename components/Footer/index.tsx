@@ -9,15 +9,15 @@ const Footer = () => {
                 <h4 className="footertitle">Quick Links</h4>
                 <div className="looterlinkswrapper">
                 <div className="footerlinkslist">
-                    <a href="#" className="footerlinkitem">Home</a>
-                    <a href="#" className="footerlinkitem">Gallery</a>
-                    <a href="#" className="footerlinkitem">Blog</a>
-                    <a href="#" className="footerlinkitem">Event</a>
+                    <a href="/" className="footerlinkitem">Home</a>
+                    <a href="/gallery" className="footerlinkitem">Gallery</a>
+                    <a href="/blogs" className="footerlinkitem">Blog</a>
+                    <a href="/event" className="footerlinkitem">Event</a>
                 </div>
                 <div className="footerlinkslist">
-                    <a href="#" className="footerlinkitem">Store</a>
-                    <a href="#" className="footerlinkitem">Pay Dues</a>
-                    <a href="#" className="footerlinkitem">Start Voting</a>
+                    <a href="/store" className="footerlinkitem">Store</a>
+                    <a href="/payDues" className="footerlinkitem">Pay Dues</a>
+                    <a href="/election" className="footerlinkitem">Start Voting</a>
                 </div>
                 </div>
             </div>
