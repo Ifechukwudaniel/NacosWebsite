@@ -1,7 +1,7 @@
 import React from 'react';
-import BlogItem from './BlogItem';
+import BlogItem from './BlogHomeItem';
 
-const BlogList = ({}) => {
+const BlogHomeList = ({}) => {
     return (
         <div className="blogwrapper">
             <BlogItem/>
@@ -11,4 +11,4 @@ const BlogList = ({}) => {
     );
 }
 
-export default BlogList;
+export default BlogHomeList;
