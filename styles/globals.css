@@ -15,7 +15,7 @@ body {
   display: flex;
   overflow: hidden;
   width: 100%;
-  height: 13%;
+  height: 14vh;
   max-height: 1000%;
   margin-top: 0px;
   margin-left: 0%;
@@ -54,7 +54,7 @@ body {
 .navbar.custom {
   position: relative;
   width: 100%;
-  height: 16%;
+  height: 14vh;
 }
 
 .navbarlogo {
@@ -349,9 +349,9 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #000;
-  -webkit-transform: translate(0px, -100vh);
-  -ms-transform: translate(0px, -100vh);
-  transform: translate(0px, -100vh);
+  -webkit-transform: translate(0px, 0vh);
+  -ms-transform: translate(0px, 0vh);
+  transform: translate(0px, 0vh);
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
@@ -1060,7 +1060,7 @@ body {
 }
 
 .pagetitlewrapper {
-  display: block;
+  display: flex;
   width: 100%;
   height: 13%;
   -webkit-box-orient: horizontal;
@@ -1079,7 +1079,7 @@ body {
 
 .pagetitle {
   height: 124%;
-  margin-top: 15vh;
+  margin-top: 22vh;
   font-family: 'DM Sans', sans-serif;
   color: #fff;
   font-size: 17vh;
@@ -1087,6 +1087,10 @@ body {
   text-align: center;
   -o-object-fit: fill;
   object-fit: fill;
+}
+
+.pageTitleContent{
+  width: 100%;
 }
 
 .text-block-3 {
@@ -1327,7 +1331,7 @@ body {
 }
 
 .profile {
-  height: 96vh;
+  height: 80vh;
   margin-top: 1%;
 }
 
@@ -1381,8 +1385,8 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 50vw;
-  height: 74vh;
+  width: 40vw;
+  height: auto;
   margin-top: 1%;
   margin-right: auto;
   margin-left: auto;
@@ -1398,7 +1402,7 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 78%;
+  width: 70%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
@@ -2639,7 +2643,7 @@ body {
     top: 0vh;
     display: block;
     -webkit-transform: translate3d(0px, -100vh, 0vh);
-    transform: translate3d(0px, -100vh, 0vh);
+    transform: translate3d(0px, 0vh, 0vh);
   }
 
   .followtext._2 {
@@ -2700,18 +2704,6 @@ body {
     height: 50vh;
     margin-right: 2%;
     margin-left: 0%;
-  }
-
-  .blogitem._1._3 {
-    display: none;
-  }
-
-  .blogitem._3 {
-    width: 50%;
-  }
-
-  .blogitem._2 {
-    display: none;
   }
 
   .blogimage {
@@ -2823,7 +2815,7 @@ body {
   }
 
   .profile {
-    height: 86vh;
+    height: 80vh;
     margin-top: 3%;
   }
 
@@ -2925,7 +2917,7 @@ body {
   }
 
   .navbar.custom {
-    height: 13%;
+    height: auto;
   }
 
   .navbarlogo {
@@ -3059,7 +3051,7 @@ body {
   }
 
   .menu {
-    display: none;
+    display: block;
     -webkit-transform: translate3d(0px, 0vh, 0vh);
     transform: translate3d(0px, 0vh, 0vh);
   }
@@ -3266,7 +3258,7 @@ body {
   }
 
   .blogitem._1 {
-    width: 67%;
+    width: 97%;
     height: 46vh;
     margin-top: 2%;
     margin-right: 0%;
@@ -3487,7 +3479,7 @@ body {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    height: 98vh;
+    height: 80vh;
     margin-top: 9%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -3734,7 +3726,7 @@ body {
 
 @media screen and (max-width: 479px) {
   .navbar.custom {
-    height: 18%;
+    height: auto;
   }
 
   .navbarlogo {
@@ -3833,7 +3825,7 @@ body {
   }
 
   .menu {
-    display: none;
+    display: block;
     background-color: #000;
   }
 
@@ -4110,7 +4102,7 @@ body {
 
   .profilecontent {
     width: 93%;
-    height: 89vh;
+    height: 66vh;
   }
 
   .profilepagecontainer {
