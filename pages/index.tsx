@@ -11,6 +11,7 @@ import {
   useMotionValue
 } from 'framer-motion';
 import {isMobile} from 'react-device-detect';
+import  {Fragment} from 'react';
 
 // import styles from '../styles/Home.module.css'
 
@@ -20,14 +21,14 @@ export default function IndexPage() {
   const quoteScrollAnimationDesktop = useTransform(scrollYProgress, [0, 0.4], [0, 400]);
   const quoteScrollAnimationMobile = useTransform(scrollYProgress, [0, 0.5], [-200, 500]);
   const homeFadeScrollAnimation = useTransform(scrollYProgress, [0, 0.3], [1, 0.3]);
-  const eventListAnimation = useTransform(scrollYProgress, [0.53, 0.64], [200,0]);
+  const eventListAnimation = useTransform(scrollYProgress, [0.53, 0.80], [200,0]);
   const quoteMove  = { hidden : {  opacity :0,x: "100vw"},showQuote : { opacity:1, x:"0vw"}}
   const homeFadeDiv  = { hidden : {  opacity :0,y: "100vw"},showDiv : { opacity:1, y:"0vw"}}
 
 
 
   return (
-    <div>
+    <Fragment>
         <motion.div className="home">
             <Header/>
               <div className="backgroundwrapper">
@@ -79,16 +80,16 @@ export default function IndexPage() {
                 <div className="eventlistwrapper">
                   <h1 className="eventtitle">Upcoming Events</h1>
                   <br/>
-                  <EventItemHome date={1} month={"Feb"} description="020 vs 022 Novelty match" />
-                  <EventItemHome date={19} month={"Jun"} description="020 vs 022 Novelty match"/>
-                  <EventItemHome date={1} month={"Jun"} description="020 vs 022 Novelty match"/>
-                  <EventItemHome date={1} month={"Jun"} description="020 vs 022 Novelty match"/>
-                  <a href="#" className="eventseemore">See More</a>
+                  <EventItemHome date={1} month={"Feb"} title="020 vs 022 Novelty match" />
+                  <EventItemHome date={19} month={"Jun"} title="020 vs 022 Novelty match"/>
+                  <EventItemHome date={1} month={"Jun"} title="020 vs 022 Novelty match"/>
+                  <EventItemHome date={1} month={"Jun"} title="020 vs 022 Novelty match"/>
+                  <a href="/event" className="eventseemore">See More</a>
                 </div>
               </motion.div>
             </div>
           </div>
         <Footer/>
-    </div>
+    </Fragment>
   )
 }
