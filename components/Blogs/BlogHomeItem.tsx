@@ -27,7 +27,7 @@ const BlogHomeItem = () => {
     <motion.div ref={ref} initial="hidden"  animate={isOpen ? "show" : "hidden"} variants={variants} className="blogitem _1">
         <img src="images/blogImage.png" loading="lazy" width="345" alt="" className="blogimage"/>
             <div className="blogcontent">
-            <a href="#" className="blogtitle">Application for Advertised Course/ Staff form Request</a>
+            <a href="/blogs/sjsjsjsj" className="blogtitle">Application for Advertised Course/ Staff form Request</a>
             <div className="text-block-2">17th June 2021</div>
             </div>
       </motion.div>
