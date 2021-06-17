@@ -6,6 +6,9 @@ body {
   line-height: 20px;
 }
 
+.pageTitleContent {
+  width: 100%;
+}
 .navbar {
   position: absolute;
   z-index: 99999;
@@ -15,7 +18,7 @@ body {
   display: flex;
   overflow: hidden;
   width: 100%;
-  height: 14vh;
+  height: 13%;
   max-height: 1000%;
   margin-top: 0px;
   margin-left: 0%;
@@ -54,7 +57,7 @@ body {
 .navbar.custom {
   position: relative;
   width: 100%;
-  height: 14vh;
+  height: 16%;
 }
 
 .navbarlogo {
@@ -340,8 +343,11 @@ body {
 
 .menu {
   position: fixed;
-  top: auto;
-  z-index: 999;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: 0%;
+  z-index: 998;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -413,7 +419,7 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 84%;
+  width: 100%;
   height: 50px;
   margin-top: 20px;
   color: #fff;
@@ -614,11 +620,13 @@ body {
   background-color: #25292f;
 }
 
-
 .blogitem._1 {
   height: 49vh;
 }
 
+.blogitem._1._3 {
+  height: 49vh;
+}
 
 .blogimage {
   width: 100%;
@@ -1039,6 +1047,7 @@ body {
   border-left: 0px solid #000;
   background-color: transparent;
   font-family: 'DM Sans', sans-serif;
+  color: #fff;
   font-size: 19px;
 }
 
@@ -1060,6 +1069,9 @@ body {
 }
 
 .pagetitlewrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
   height: 13%;
@@ -1068,7 +1080,6 @@ body {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -ms-grid-row-align: auto;
   align-self: auto;
   grid-auto-columns: 1fr;
   -ms-grid-columns: 1fr 1fr;
@@ -1079,7 +1090,11 @@ body {
 
 .pagetitle {
   height: 124%;
-  margin-top: 22vh;
+  margin-top: 15vh;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   font-family: 'DM Sans', sans-serif;
   color: #fff;
   font-size: 17vh;
@@ -1087,10 +1102,6 @@ body {
   text-align: center;
   -o-object-fit: fill;
   object-fit: fill;
-}
-
-.pageTitleContent{
-  width: 100%;
 }
 
 .text-block-3 {
@@ -1196,19 +1207,21 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 400px;
+  width: 100%;
   height: 30%;
   margin-top: 0px;
   margin-bottom: 8%;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .signtextor {
   font-family: 'DM Sans', sans-serif;
+  color: #fff;
   font-size: 4vw;
+  line-height: 38px;
   font-weight: 700;
 }
 
@@ -1229,6 +1242,7 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
   margin-top: 10%;
   margin-bottom: 0%;
   -webkit-box-orient: vertical;
@@ -1240,14 +1254,20 @@ body {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  justify-items: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  grid-auto-columns: 1fr;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
 }
 
 .blogpageitem {
-  width: 50%;
+  width: 98%;
   margin-bottom: 5%;
   background-color: #25292f;
 }
@@ -1331,7 +1351,7 @@ body {
 }
 
 .profile {
-  height: 80vh;
+  height: 96vh;
   margin-top: 1%;
 }
 
@@ -1385,8 +1405,8 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 40vw;
-  height: auto;
+  width: 50vw;
+  height: 74vh;
   margin-top: 1%;
   margin-right: auto;
   margin-left: auto;
@@ -1402,7 +1422,7 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 70%;
+  width: 78%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
@@ -2624,6 +2644,48 @@ body {
   text-decoration: none;
 }
 
+.menunavaigion {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+}
+
+.pagetitlecontent {
+  width: 100%;
+}
+
+.bloglist {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.loginlink {
+  display: none;
+  margin-top: 10%;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.loginlink.forgetpassword {
+  display: block;
+}
+
 @media screen and (max-width: 991px) {
   .welcometextdescription {
     font-size: 2vw;
@@ -2643,7 +2705,7 @@ body {
     top: 0vh;
     display: block;
     -webkit-transform: translate3d(0px, -100vh, 0vh);
-    transform: translate3d(0px, 0vh, 0vh);
+    transform: translate3d(0px, -100vh, 0vh);
   }
 
   .followtext._2 {
@@ -2706,6 +2768,18 @@ body {
     margin-left: 0%;
   }
 
+  .blogitem._1._3 {
+    display: none;
+  }
+
+  .blogitem._3 {
+    width: 50%;
+  }
+
+  .blogitem._2 {
+    display: none;
+  }
+
   .blogimage {
     height: 35vh;
   }
@@ -2716,6 +2790,8 @@ body {
   }
 
   .blogtitle {
+    display: block;
+    margin-bottom: 10px;
     font-family: 'DM Sans', sans-serif;
     font-size: 2vw;
     line-height: 26px;
@@ -2815,7 +2891,7 @@ body {
   }
 
   .profile {
-    height: 80vh;
+    height: 86vh;
     margin-top: 3%;
   }
 
@@ -2897,6 +2973,27 @@ body {
   .candidateitem {
     height: 90px;
   }
+
+  .bloglist {
+    justify-items: center;
+  }
+
+  .link {
+    width: 100%;
+  }
+
+  .loginlink {
+    display: none;
+    width: 100%;
+    margin-top: 10%;
+    font-family: 'DM Sans', sans-serif;
+    color: #fff;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -2917,7 +3014,7 @@ body {
   }
 
   .navbar.custom {
-    height: auto;
+    height: 13%;
   }
 
   .navbarlogo {
@@ -2960,7 +3057,7 @@ body {
     width: 80%;
     margin-top: 16px;
     margin-left: 0px;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 4vh;
     text-align: center;
     letter-spacing: 2px;
@@ -3011,8 +3108,8 @@ body {
 
   .welcometext {
     margin-top: 1%;
-    font-size: 7vw;
-    line-height: 2vh;
+    font-size: 5vw;
+    line-height: 1vh;
     letter-spacing: 2px;
   }
 
@@ -3021,7 +3118,7 @@ body {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    margin-top: 5%;
+    margin-top: 4%;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
@@ -3159,8 +3256,8 @@ body {
   .homeilustration.img {
     position: static;
     display: block;
-    width: 300px;
-    height: 300px;
+    width: 293px;
+    height: 285px;
     margin-top: 0px;
     margin-right: auto;
     margin-left: auto;
@@ -3258,7 +3355,7 @@ body {
   }
 
   .blogitem._1 {
-    width: 97%;
+    width: 88%;
     height: 46vh;
     margin-top: 2%;
     margin-right: 0%;
@@ -3278,6 +3375,8 @@ body {
 
   .blogimage {
     height: 32vh;
+    -o-object-fit: cover;
+    object-fit: cover;
   }
 
   .blogtitle {
@@ -3429,6 +3528,7 @@ body {
     background-color: #2d4fc6;
   }
 
+
   .signinput {
     width: 100%;
     margin-bottom: 20px;
@@ -3470,6 +3570,11 @@ body {
     display: none;
   }
 
+  .blogpagelistwrapper {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+
   .blogpageitem {
     width: 82%;
   }
@@ -3479,7 +3584,7 @@ body {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    height: 80vh;
+    height: 98vh;
     margin-top: 9%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -3532,6 +3637,7 @@ body {
   .gallaryimage {
     width: 90%;
     max-width: 90%;
+    margin-bottom: 30px;
   }
 
   .gallarylist {
@@ -3722,11 +3828,21 @@ body {
     -ms-flex-align: center;
     align-items: center;
   }
+
+  .bloglist {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .loginlink {
+    display: block;
+    margin-top: 3%;
+  }
 }
 
 @media screen and (max-width: 479px) {
   .navbar.custom {
-    height: auto;
+    height: 18%;
   }
 
   .navbarlogo {
@@ -3993,7 +4109,7 @@ body {
   }
 
   .eventti.eventdescription {
-    font-size: 2.4vw;
+    font-size: 2.7vw;
     line-height: 16px;
   }
 
@@ -4102,7 +4218,7 @@ body {
 
   .profilecontent {
     width: 93%;
-    height: 66vh;
+    height: 89vh;
   }
 
   .profilepagecontainer {
@@ -4229,4 +4345,9 @@ body {
   .candidatecardtitle {
     font-size: 6vw;
   }
+
+  .bloglist {
+    grid-column-gap: 15px;
+  }
 }
+
