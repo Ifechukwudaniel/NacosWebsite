@@ -11,9 +11,10 @@ export default function LoginPage() {
         <Header/>
         <div className="backgroundwrapper">
           <div className="imageright signin">
-            <div className="homeilustration signin">
-              <img src="images/School.png" loading="lazy" width="384" alt="" className="homeilustration img"/></div>
-              <motion.h2    animate={{scale: [1.3,1.8, 1.3], y:[-100, 0, -100]}} transition={{ repeat: Infinity, duration: 3 }}  className="signuptext ">
+            <motion.div animate={{y:["-100vw","0vw"]}} transition={{duration:2}} className="homeilustration signin ">
+              <img src="images/School.png" loading="lazy" width="384" alt="" className="homeilustration img login"/>
+              </motion.div>
+              <motion.h2  animate={{y:["-100vw","0vw"]}} transition={{duration:1}}   className="signuptext ">
               Welcome to NACOS <br/>B.I.U Chapter
             </motion.h2>
           </div>
