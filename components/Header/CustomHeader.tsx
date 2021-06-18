@@ -1,6 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { Sling as Hamburger } from 'hamburger-react'
 import { motion } from 'framer-motion';
+import { isMobile } from 'react-device-detect';
+import HeaderLink from './HeaderLink';
+import HeaderLinksList from './HeaderLinksList';
+
 
 const CustomHeader = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -30,12 +34,12 @@ const CustomHeader = () => {
                 )
                 : (
                     <div className="navbar">
-                    <img src="images/logo.png" loading="lazy" width="73" alt="" className="navbarlogo"/>
+                    <img style={{opacity:0}} src="images/logo.png" loading="lazy" width="73" alt="" className="navbarlogo"/>
                     <div  className="handbugur mobile">
                     <Hamburger  onToggle={handleHamburger} color="#fff" size={40} />
                 </div>
                 <div  className="handbugur fullscreen">
-                    <Hamburger onToggle={handleHamburger} color="#fff" size={40} />
+                    <Hamburger  onToggle={handleHamburger} color="#fff" size={40} />
                 </div>
             </div>  
                 )
@@ -43,44 +47,36 @@ const CustomHeader = () => {
         <motion.div style={{opacity:0}}  animate={isOpen ? "open" : "closed"}  variants={variants}  className="menu">
             <div className="maincomtent">
                 <div className="menuhalf _1">
-                <div className="menuhalfcontent">
-                    <div className="menuwrapper">
-                    <motion.a  whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/" className="menulink">Home</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/payDues" className="menulink">Pay Dues</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/store" className="menulink">Shop</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/election" className="menulink">Election</motion.a>
-                        <motion.a  whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/event" className="menulink">Event</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }}href="/blogs" className="menulink">Blog</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/gallery" className="menulink">Gallery</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/login" className="menulink">Login</motion.a>
+                    <div className="menuhalfcontent">
+                            <div className="menuwrapper">
+                                <HeaderLinksList/>
+                            </div>
+                            <div>
+                                {
+                                    !isMobile && (
+                                        <div className="socialwrapper">
+                                            <h1 className="followtextlarge">Follow us on social media</h1>
+                                            <h3 data-w-id="9c21c51e-eb55-9bf0-94db-5e5b75c824f1" className="followtext">Follow us on social media</h3>
+                                            <div className="socialiconwrapper">
+                                                <div className="iconitem"><img src="images/facebooK.png" loading="lazy" width="22" alt="" className="facebookicon"/></div>
+                                                <div className="iconitem"><img src="images/instagram.png" loading="lazy" alt="" className="twittericon"/></div>
+                                                <div className="iocnitem"><img src="images/twitter.png" loading="lazy" alt="" className="twittericon"/></div>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        </div>
                     </div>
-                    <div className="socialwrapper">
-                    <h1 className="followtextlarge">Follow us on social media</h1>
-                    <h3 data-w-id="9c21c51e-eb55-9bf0-94db-5e5b75c824f1" className="followtext">Follow us on social media</h3>
-                    <div className="socialiconwrapper">
-                        <div className="iconitem"><img src="images/facebooK.png" loading="lazy" width="22" alt="" className="facebookicon"/></div>
-                        <div className="iconitem"><img src="images/instagram.png" loading="lazy" alt="" className="twittericon"/></div>
-                        <div className="iocnitem"><img src="images/twitter.png" loading="lazy" alt="" className="twittericon"/></div>
-                    </div>
-                    </div>
-                </div>
                 </div>
                 <div className="menuhalf _2">
-                <div className="menuhalfcontent">
-                <div className="menuwrapper largescrren">
-                <motion.a  whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/" className="menulink">Home</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/payDues" className="menulink">Pay Dues</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/store" className="menulink">Shop</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/election" className="menulink">Election</motion.a>
-                        <motion.a  whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/event" className="menulink">Event</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }}href="/blogs" className="menulink">Blog</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/gallery" className="menulink">Gallery</motion.a>
-                        <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }} href="/login" className="menulink">Login</motion.a>
+                    <div className="menuhalfcontent">
+                        <div className="menuwrapper largescrren">
+                            <HeaderLinksList/>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
-            </motion.div>
+        </motion.div>
     </Fragment>
     );
 }
