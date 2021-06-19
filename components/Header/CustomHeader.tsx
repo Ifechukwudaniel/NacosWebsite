@@ -33,13 +33,13 @@ const CustomHeader = () => {
                 </div>
                 )
                 : (
-                    <div className="navbar">
+                <div className="navbar">
                     <img style={{opacity:0}} src="images/logo.png" loading="lazy" width="73" alt="" className="navbarlogo"/>
-                    <div  className="handbugur mobile">
+                    <div    className="handbugur mobile">
                     <Hamburger  onToggle={handleHamburger} color="#fff" size={40} />
                 </div>
-                <div  className="handbugur fullscreen">
-                    <Hamburger  onToggle={handleHamburger} color="#fff" size={40} />
+                <div className="handbugur fullscreen">
+                    <Hamburger   onToggle={handleHamburger} color="#fff" size={40} />
                 </div>
             </div>  
                 )
