@@ -29,6 +29,7 @@ export default async function loginPortal (req: NextApiRequest, res: NextApiResp
         let  $ = cheerio.load(loginResponse)
         let errorMsg = $('#lblErrorMessage').text()
         if(errorMsg || errorMsg.length!==0)  return  res.status(500).send({ status:500, message:errorMsg} )
+        if(foundUser)   return  res.json({ message:"Success", user: foundUser})
         config.method="GET"; 
         config.url="https://www.biuportal.net/Students/StudentsDetails.aspx";
         config.data={};
@@ -36,7 +37,6 @@ export default async function loginPortal (req: NextApiRequest, res: NextApiResp
         $ = cheerio.load(responseDetail)
         let department = $("#HeaderContent_txtDepartment").val()
         if(department !=="COMPUTER SCIENCE")  return  res.status(500).send({ status:500, message:"Only Computer Science student can login"} )
-        if(foundUser)   return  res.json({ message:"Success", user: foundUser})
         let name : string = $("#HeaderContent_lblStudentsName").text()
         let level : number =  parseInt($("#HeaderContent_txtLevel").val().toString())
         let phone:string =  $("#HeaderContent_txtPhoneNumber").val().toString()
