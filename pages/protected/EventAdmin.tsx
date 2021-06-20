@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { isMobile } from 'react-device-detect'
 import { Fragment } from 'react'
 import CustomHeader from '@components/Header/CustomHeader'
+import ProtectedTab from '@components/protected/ProtectedTab'
 
 export default function EventPage() {
     const [ password , setPassword] = useState<string>("")
@@ -17,19 +18,9 @@ export default function EventPage() {
     
 
     return (
-        <Fragment>
+        <div>
             <CustomHeader/>
-            <div>
-                <div className="adminheadermenu">
-                    <div className="adminheader">
-                    <a href="/protected/EventAdmin" className="adminhederitem  active w--current">Events</a>
-                    <a href="/protected/BlogAdmin" className="adminhederitem">Blogs</a>
-                    <a href="/protected/VoteAdmin" className="adminhederitem">Voting</a>
-                    <a href="/protected/DuesAdmin" className="adminhederitem">Dues</a>
-                    <a href="/protected/AdminGallary" aria-current="page" className="adminhederitem">Gallery</a>
-                    </div>
-                </div>
-            </div>
-        </Fragment>     
+            <ProtectedTab/>
+        </div>     
     )
 }

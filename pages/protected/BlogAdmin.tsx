@@ -8,28 +8,18 @@ import LoadingOverlay from '@components/LoadingOverlay'
 import { useRouter } from 'next/router'
 import { isMobile } from 'react-device-detect'
 import { Fragment } from 'react'
-import Header from '@components/Header'
+import CustomHeader from '@components/Header/CustomHeader'
+import ProtectedTab from '@components/protected/ProtectedTab'
 
 export default function BlogAdminPage() {
     const [ password , setPassword] = useState<string>("")
     const [loading, setLoading] = useState(false)
     const router = useRouter()
-    
-    const handlePasswordChange :React.ChangeEventHandler<HTMLInputElement> = (event)=>{
-        return  setPassword(event.target.value);
-    }
-
-    const handleSubmit = (e:React.SyntheticEvent) =>{
-        e.preventDefault();
-        if(password!==process.env.PRIVATEPASSWORD){
-            router.push('/')
-        }
-        router.push('/')
-    }
 
     return (
-        <Fragment>
-            <Header/>  
-        </Fragment>     
+        <div>
+            <CustomHeader/>
+            <ProtectedTab/>
+        </div>    
     )
 }

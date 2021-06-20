@@ -1,35 +1,35 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
-// import styles from '../styles/Home.module.css'
-import { signIn, signOut, useSession } from 'next-auth/client'
 import { useState } from 'react'
-import LoadingOverlay from '@components/LoadingOverlay'
 import { useRouter } from 'next/router'
-import { isMobile } from 'react-device-detect'
-import { Fragment } from 'react'
-import Header from '@components/Header'
+import CustomHeader from '@components/Header/CustomHeader'
+import ProtectedTab from '@components/protected/ProtectedTab'
+import { motion } from 'framer-motion'
+import GalleryItemAdmin from '@components/protected/AdminGallary/GalleryItem'
 
 export default function BlogAdminPage() {
     const [ password , setPassword] = useState<string>("")
     const [loading, setLoading] = useState(false)
     const router = useRouter()
     
-    const handlePasswordChange :React.ChangeEventHandler<HTMLInputElement> = (event)=>{
-        return  setPassword(event.target.value);
-    }
-
-    const handleSubmit = (e:React.SyntheticEvent) =>{
-        e.preventDefault();
-        if(password!==process.env.PRIVATEPASSWORD){
-            router.push('/')
-        }
-        router.push('/')
-    }
+    
 
     return (
-        <Fragment>
-            <Header/>  
-        </Fragment>     
-    )
+        <div>
+            <CustomHeader/>
+            <ProtectedTab/>
+            <div className="admincontentwrapper">
+                <div className="emptylistnon"><img src="images/images.png" loading="lazy" alt="" className="calenderimage"/>
+                    <div className="nulldatatext">Upload your images to<br/>the gallery<br/></div>
+                    <motion.button whileHover={{background:'red'}} whileTap={{scale:1.2}}  className="createitembutton w-button">Upload Images</motion.button>
+                </div>
+                <div className="gallarycontent">
+                    <div className="addimagewrapper">
+                        <motion.button whileHover={{opacity:0.8}} whileTap={{scale:1.1}} className="createitembutton addimagebutton w-button">Add Images</motion.button>
+                    </div>
+                    <div className="imagelist">
+                        <GalleryItemAdmin/>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        )
 }

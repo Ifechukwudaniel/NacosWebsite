@@ -9,27 +9,18 @@ import { useRouter } from 'next/router'
 import { isMobile } from 'react-device-detect'
 import { Fragment } from 'react'
 import Header from '@components/Header'
+import ProtectedTab from '@components/protected/ProtectedTab'
+import CustomHeader from '@components/Header/CustomHeader'
 
 export default function VoteAdminPage() {
     const [ password , setPassword] = useState<string>("")
     const [loading, setLoading] = useState(false)
     const router = useRouter()
-    
-    const handlePasswordChange :React.ChangeEventHandler<HTMLInputElement> = (event)=>{
-        return  setPassword(event.target.value);
-    }
-
-    const handleSubmit = (e:React.SyntheticEvent) =>{
-        e.preventDefault();
-        if(password!==process.env.PRIVATEPASSWORD){
-            router.push('/')
-        }
-        router.push('/')
-    }
 
     return (
-        <Fragment>
-            <Header/>  
-        </Fragment>     
+        <div>
+            <CustomHeader/>
+            <ProtectedTab/>
+        </div> 
     )
 }
