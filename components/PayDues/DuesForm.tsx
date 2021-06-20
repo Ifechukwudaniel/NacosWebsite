@@ -26,7 +26,7 @@ const DuesForm = () => {
             <form onSubmit={handleSubmit} className="payduesform">
                 <label className="profilelabel">Session</label>
                     <select onChange={handleSectionChange}  name="section" className="profileinput payduesinput w-select">
-                        <option value="">Select Section ...</option>
+                        <option style={{background:"#fff"}} value="">Select Section ...</option>
                         {
                             sectionList.map((x, i)=>(
                                 <option key = {i} value={`${x}`}>{x}</option>
