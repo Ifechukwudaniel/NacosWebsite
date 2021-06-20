@@ -3,9 +3,15 @@ import Image from 'next/image'
 import { Fragment } from 'react'
 import Footer from '../../components/Footer'
 import CustomHeader from '../../components/Header/CustomHeader'
+import { useSession } from "next-auth/client"
 // import styles from '../styles/Home.module.css'
 
 export default function ProfilePage() {
+  const [session, loading] = useSession()
+  if (session) {
+    console.log(session.user)
+  }
+
   return (
     <Fragment>
        <CustomHeader/>

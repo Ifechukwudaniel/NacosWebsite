@@ -9,7 +9,7 @@ class MyDocument extends Document {
 
   render(){
     return (
-      <Html>
+      <Html style={{width:"100%"}}>
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport"/>
           <link href="static/css/normalize.css" rel="stylesheet" type="text/css"/>

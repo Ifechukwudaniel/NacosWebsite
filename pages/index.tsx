@@ -19,7 +19,7 @@ export default function IndexPage() {
 
   const {  scrollYProgress } = useViewportScroll();
   const quoteScrollAnimationDesktop = useTransform(scrollYProgress, [0, 0.4], [0, 400]);
-  const quoteScrollAnimationMobile = useTransform(scrollYProgress, [0, 0.5], [-200, 500]);
+  const quoteScrollAnimationMobile = useTransform(scrollYProgress, [0, 0.5], [-200, 400]);
   const homeFadeScrollAnimation = useTransform(scrollYProgress, [0, 0.3], [1, 0.3]);
   const eventListAnimation = useTransform(scrollYProgress, [0.53, 0.80], [200,0]);
   const quoteMove  = { hidden : {  opacity :0,x: "100vw"},showQuote : { opacity:1, x:"0vw"}}

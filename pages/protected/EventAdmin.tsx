@@ -15,17 +15,6 @@ export default function EventPage() {
     const [loading, setLoading] = useState(false)
     const router = useRouter()
     
-    const handlePasswordChange :React.ChangeEventHandler<HTMLInputElement> = (event)=>{
-        return  setPassword(event.target.value);
-    }
-
-    const handleSubmit = (e:React.SyntheticEvent) =>{
-        e.preventDefault();
-        if(password!==process.env.PRIVATEPASSWORD){
-            router.push('/')
-        }
-        router.push('/')
-    }
 
     return (
         <Fragment>
