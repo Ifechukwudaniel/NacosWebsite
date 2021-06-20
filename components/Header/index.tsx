@@ -21,7 +21,6 @@ const Header = () => {
     const handleHamburger = ()=>{
         setIsOpen(!isOpen)
     }
-    console.log(isMobile)
     return (
         <Fragment>
             {
