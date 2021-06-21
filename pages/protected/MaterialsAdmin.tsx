@@ -11,7 +11,7 @@ import { Fragment } from 'react'
 import CustomHeader from '@components/Header/CustomHeader'
 import ProtectedTab from '@components/protected/ProtectedTab'
 
-export default function EventAdminPage() {
+export default function MaterialAdminPage() {
     const [ password , setPassword] = useState<string>("")
     const [loading, setLoading] = useState(false)
     const router = useRouter()
