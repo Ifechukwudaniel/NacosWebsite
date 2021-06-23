@@ -31,6 +31,7 @@ const HeaderLinksList = () => {
     return (
         <Fragment>
             <HeaderLink href="/" text="Home" />
+            <HeaderLink href="/material" text="Material" />
             <HeaderLink prevent href="/profile" text="Profile" />
             <HeaderLink prevent href="/payDues" text="Pay Dues" />
             <HeaderLink href="/store" text="Store" />

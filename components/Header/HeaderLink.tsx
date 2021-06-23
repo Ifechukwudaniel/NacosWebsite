@@ -9,7 +9,7 @@ const HeaderLink = (props: { href : string , text:string, prevent ? : boolean}) 
 
     const handleClick = (e:any)=>{
       if(props.prevent ){
-        router.push('/')
+        router.push('/login')
         return e.preventDefault();
       }
     }
