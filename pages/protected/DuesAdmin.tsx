@@ -37,7 +37,7 @@ export default function DuesAdminPage() {
                             See Dues paid by students here<br/>
                         </div>
                 </div>
-                <DuesAccordion open/>
+                <DuesAccordion />
                 <DuesAccordion/>
             </div>
             

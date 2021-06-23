@@ -10,6 +10,7 @@ import { isMobile } from 'react-device-detect'
 import { Fragment } from 'react'
 import CustomHeader from '@components/Header/CustomHeader'
 import ProtectedTab from '@components/protected/ProtectedTab'
+import AdminMaterialItem from '@components/protected/AdminMaterial/AdminMaterialItem'
 
 export default function MaterialAdminPage() {
     const [ password , setPassword] = useState<string>("")
@@ -21,6 +22,19 @@ export default function MaterialAdminPage() {
         <div>
             <CustomHeader/>
             <ProtectedTab/>
-        </div>     
+            <div className="duescontent">
+                <div className="w-form">
+                    <form id="email-form" name="email-form" data-name="Email Form" className="serchduesform">
+                        <input type="text" className="searchrecods w-input"  name="records" data-name="records" placeholder="Search records" id="records"/>
+                        <motion.div   whileTap={{scale:0.9}} className="searchrecods icon"><img src="/images/search.png" loading="lazy" width="16" alt="" className="searchiocn"/></motion.div>
+                    </form>
+                </div>
+            </div>
+            <div className="materiallistwrapper">
+                <div className="materiallist">
+                    <AdminMaterialItem/>
+                </div>
+            </div>
+        </div> 
     )
 }
