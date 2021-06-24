@@ -1,12 +1,12 @@
 import {connectToDatabase} from "../../../utils/connectToDatabase";
 import { NextApiRequest, NextApiResponse } from "next";
-import { Event, IEvent } from "@models/Events";
+import { Material, IMaterial } from "@models/Material";
 
-export default async function getAllEvents(req: NextApiRequest, res: NextApiResponse) {
+export default async function getAllMaterials(req: NextApiRequest, res: NextApiResponse) {
     try {
         await connectToDatabase()
-        let allEvents = await Event.find({})
-        return  res.send(allEvents)
+        let allMaterials = await Material.find({})
+        return  res.send(allMaterials)
     } catch (err) {
         return  res.status(500).send({status:500, message:err.message})
     }

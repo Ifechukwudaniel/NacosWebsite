@@ -6,10 +6,20 @@ import CustomHeader from '../../components/Header/CustomHeader';
 import DuesForm from '../../components/PayDues/DuesForm';
 import DuesHeader from '../../components/PayDues/DuesHeader';
 import DuesItem from '../../components/PayDues/DuesItem';
+import { useSession ,getSession} from "next-auth/client"
+import {  IUser} from '@models/User'
+import axios from 'axios'
 // import styles from '../styles/Home.module.css'
 
-export default function PayDuesPage() {
-  const [hasPreviousPayments, setHasPreviousPayments] = useState<Boolean>(false);
+export default function PayDuesPage(props:{session ,userPayedDues, user}) {
+
+    const [hasPreviousPayments, setHasPreviousPayments] = useState<Boolean>(props.userPayedDues.length > 0 ? true : false);
+    // console.log(props.session, props.user, !props.userPayedDues.length)
+    console.log(props.userPayedDues)
+
+    const handleSuccessPayment =  (data)=>{
+        console.log(props.user, data)
+    }
     return (
         <div>
             <CustomHeader/>
@@ -17,7 +27,7 @@ export default function PayDuesPage() {
                 <h3 className="profilepagetitle payduestitle">Pay Dues</h3>
             </div>
             <div className="paydues">
-                <DuesForm/>
+                <DuesForm onSuccessPaymentComplete= {handleSuccessPayment}/>
                 {
                 hasPreviousPayments && (
                     <div className="profilepagecontainer">
@@ -31,11 +41,32 @@ export default function PayDuesPage() {
                     hasPreviousPayments && (
                             <div className="previouspayment">
                                 <DuesHeader/>
-                                <DuesItem section="2020/2021" amount="3000" date="2 January 2021"/>
+                                {
+                                    props.userPayedDues.map((x, i)=>(
+                                        <DuesItem  {...x}/>
+
+                                    ))
+                                }
                             </div>
                     )}
             </div>
             <Footer/>
         </div>
     )
+}
+
+
+
+export async function getServerSideProps(context) {
+    const session = await getSession(context)
+    if(!session){
+        context.res.writeHead(302, { Location: '/login' });
+        return context.res.end();
+    }
+
+    let  {user}:{user: IUser} = await (await axios.post(`${process.env.URL}/api/users/find`,{ email:session.user['email']})).data
+    let {userPayedDues} = await (await axios.post(`${process.env.URL}/api/dues/userDues`,{ email:session.user['email']})).data
+    return {
+        props: { session,userPayedDues,user  }
+    }
 }

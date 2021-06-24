@@ -1,9 +1,12 @@
+import PayStackHook from '@hooks/PayStackHook';
 import React, { HtmlHTMLAttributes, useState, useEffect } from 'react';
 
 
-const DuesForm = () => {
+
+const DuesForm = (props: {onSuccessPaymentComplete:Function}) => {
     const  [ section , setSection ] = useState<string>()
     const [ sectionList , setSectionsList ] = useState<string[]>([])
+    const [disabled , setDisabled ] = useState(true)
 
     useEffect(() => {
         let currentYear =   new Date().getFullYear()+1
@@ -14,12 +17,20 @@ const DuesForm = () => {
 
     const handleSectionChange :React.ChangeEventHandler<HTMLSelectElement> = (event)=>{
         setSection(event.target.value);
+        if(event.target.value) return  setDisabled(false)
+        return setDisabled(true)
     }
 
     const handleSubmit = (e:React.SyntheticEvent) =>{
         e.preventDefault();
         console.log(section)
     }
+
+    const onSuccessPayment = (x)=>{
+       props.onSuccessPaymentComplete(x)
+    }
+
+    const onClose = ()=>{}
 
     return (
         <div className="payduesformwrapper w-form">
@@ -33,7 +44,7 @@ const DuesForm = () => {
                             ))
                         }
                     </select>
-                <input type="submit" value="Make Payment" data-wait="Please wait..." className="profilesubmitbutton w-button"/>
+                <PayStackHook disabled={disabled} onSuccess={onSuccessPayment} onClose={onClose}/>
             </form>
         </div>
     );

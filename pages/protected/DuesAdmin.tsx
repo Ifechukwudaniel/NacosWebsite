@@ -11,12 +11,14 @@ import { Fragment } from 'react'
 import CustomHeader from '@components/Header/CustomHeader'
 import ProtectedTab from '@components/protected/ProtectedTab'
 import DuesAccordion from '@components/protected/DuesAdmin/DuesAccordion'
+import  axios from "axios"
 
 
-export default function DuesAdminPage() {
+export default function DuesAdminPage(props:{payedDues}) {
     const [ password , setPassword] = useState<string>("")
     const [loading, setLoading] = useState(false)
     const router = useRouter()
+    const [duesList , setDues ] = useState(props.payedDues || [])
     
     return (
         <div>
@@ -37,10 +39,20 @@ export default function DuesAdminPage() {
                             See Dues paid by students here<br/>
                         </div>
                 </div>
-                <DuesAccordion />
-                <DuesAccordion/>
+                {
+                    duesList.map((x, i)=>(
+                        <DuesAccordion {...x} key={i}/>
+                    ))
+                }
             </div>
             
         </div>    
     )
+}
+
+export async function getStaticProps() {
+        const payedDues  = await (await axios.get(`${process.env.URL}/api/dues`)).data
+        return {
+            props: payedDues,
+        };
 }

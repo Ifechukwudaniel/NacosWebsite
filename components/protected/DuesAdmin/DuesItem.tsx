@@ -1,11 +1,14 @@
 import React from 'react';
+import {IPayedDuesItem} from '@models/PayedDues'
+import moment from 'moment';
 
-const DuesItem = () => {
+
+const DuesItem = (props:IPayedDuesItem) => {
     return (
         <div className="previouspaymentitem">
-            <div className="previouspaymentlisttext">Victor Osundu</div>
-            <div className="previouspaymentlisttext mobile">20th January 2021</div>
-            <div className="previouspaymentlisttext">5000 NGN</div>
+            <div className="previouspaymentlisttext">{props.user.name}</div>
+            <div className="previouspaymentlisttext mobile">{ moment(props.date).format('DD MMMM YYYY')}</div>
+            <div className="previouspaymentlisttext">{props.amount} NGN</div>
             <div className="previouspaymentprint">
                 <a href="#" className="printreceipt">Print Reciept</a>
             </div>

@@ -19,8 +19,11 @@ const EventSchema: Schema = new Schema({
     description : {
         type:String,
         required:true
-    }
-    
+    },
+    expireAt: {
+        type: Date, 
+        required: true,
+    },
 });
 
 export const Event : Model<IEvent> = mongoose.models.Event || model("Event", EventSchema)

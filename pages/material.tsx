@@ -1,11 +1,16 @@
 import MaterialItem from '@components/material/materialItem'
+import { Material, IMaterial } from '@models/Material'
+import axios from 'axios'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
 import CustomHeader from '../components/Header/CustomHeader'
+
 // import styles from '../styles/Home.module.css'
 
-export default function MaterialPage() {
+export default function MaterialPage(props: {materials:IMaterial[]}) {
+    const [materialsList , setMaterialList] = useState(props.materials)
     return (
             <div>
                 <CustomHeader/>
@@ -21,10 +26,20 @@ export default function MaterialPage() {
                 </div>
                 <div className="materiallistwrapper">
                     <div className="materiallist">
-                        <MaterialItem/>
-                        <MaterialItem/>
+                        {
+                            materialsList.map((x, i)=>(
+                                <MaterialItem {...x} key={i}/>
+                            ))
+                        }
                     </div>
                 </div>
-            </div>
+        </div>
         )
+}
+
+export async function getStaticProps() {
+    const materials: IMaterial[] = await (await axios(`${process.env.URL}/api/material`)).data
+    return {
+        props: {materials},
+    };
 }

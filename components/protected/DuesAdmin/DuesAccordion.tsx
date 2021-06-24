@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import DuesItem from './DuesItem';
+import {IPayedDuesAccordion} from '@models/PayedDues'
+
 
 
 
@@ -17,7 +19,7 @@ const accordionVariants = {
 
 
 
-const DuesAccordion = (props :{ open? :boolean} ) => {
+const DuesAccordion = (props :{ open? :boolean,section:string, dues:IPayedDuesAccordion[]} ) => {
     const  [isOpen , setOpen] = useState(false)
     const [imageSrc, setImageSrc ] = useState("/images/arrow-up.png")
 
@@ -28,7 +30,7 @@ const DuesAccordion = (props :{ open? :boolean} ) => {
     return (
     <div className="duesaccordin">
         <div className="duesaccordianheader">
-            <h3 className="paymentyear">2020/2019 payment</h3>
+            <h3 className="paymentyear">{props.section} payment</h3>
                 <div className="accordingicon">
                     <motion.img  initial="closed" animate={isOpen ?"open" : "closed"}  onClick={arrowClick}  variants={arrowVariants} src={imageSrc} loading="lazy" width="16" alt="" className="searchiocn"/>
                 </div>
@@ -42,8 +44,11 @@ const DuesAccordion = (props :{ open? :boolean} ) => {
                         <div className="previousheadertext accordain"> Amount</div>
                     </div>
                     <div  style={{width: "100%" }}>
-                        <DuesItem/>
-                        <DuesItem/>
+                        {
+                            props.dues.map((x, i)=>(
+                                <DuesItem key ={i}  {...x}/>
+                            ))
+                        }
                     </div>
                 </div>
             </div>
