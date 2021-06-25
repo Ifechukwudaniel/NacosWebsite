@@ -1,13 +1,8 @@
-import Head from 'next/head'
-import Image from 'next/image'
+
 import { motion } from 'framer-motion'
-// import styles from '../styles/Home.module.css'
-import { signIn, signOut, useSession } from 'next-auth/client'
 import { useState } from 'react'
 import LoadingOverlay from '@components/LoadingOverlay'
-import { useRouter } from 'next/router'
-import { isMobile } from 'react-device-detect'
-import { Fragment } from 'react'
+import  Router ,{ useRouter } from 'next/router'
 import CustomHeader from '@components/Header/CustomHeader'
 import ProtectedTab from '@components/protected/ProtectedTab'
 import ModalOverlay from '@components/ModalOverlay'
@@ -15,9 +10,9 @@ import AdminEventItem from '@components/protected/AdminEvent/AdminEventItem'
 import { IEvent } from '@models/Events'
 import  axios from "axios"
 import {NotificationManager} from 'react-notifications';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import AdminEventForm from '@components/protected/AdminEvent/AdminEventForm'
+import addDays from '@utils/addDays'
 
 export default function EventAdminPage(props: {
     events:IEvent[]
@@ -29,19 +24,38 @@ export default function EventAdminPage(props: {
     const [open, setOpen] = useState(false)
     const [startDate, setStartDate] = useState(new Date());
     
-    const handleCreateEvent = ()=>{
-        setOpen(!open)
+    
+    const handleCreateEvent =  async (data)=>{
+        try {
+            setLoadingText("Creating Event")
+            setLoading(true)
+            console.log(data)
+            await axios.post(`http://localhost:3000/api/event/createEvent`,{
+                title:data.title, 
+                description:data.description,
+                date:data.date
+            })
+            setPageEvent([...pageEvents, data])
+            NotificationManager.success("Created Event");
+            return setOpen(!open)
+        } catch (error) {
+            // console.log(error)
+            setLoading(false)
+            // return NotificationManager.error("Please an error occurred");
+        }
     }
+
+
     const handleDelete = async (id)=>{
         try {
-            setLoadingText("Deleting Event")
-            setLoading(true)
-            await axios.post(`${window.location.host}/api/event/delete`,{id})
+            setLoadingText("Deleting Event"), setLoading(true)
+            await axios.post(`http://localhost:3000/api/event/delete`,{id})
+            setPageEvent(pageEvents.filter(x=>x._id!==id))
             return setLoading(false)
         } catch (error) {
             setLoading(false)
             console.log(error)
-            // return NotificationManager.error(error.response.statusText);
+            return NotificationManager.error(error.response.statusText);
         }
     }
 
@@ -51,7 +65,7 @@ export default function EventAdminPage(props: {
             <ProtectedTab/>
             <LoadingOverlay active={loading} text={loadingText}/>
             <ModalOverlay onClose = {()=>setOpen(!open)} active={open} title="Create New Event">
-                <AdminEventForm handleClose={handleCreateEvent} />
+                <AdminEventForm onSubmit={handleCreateEvent} handleClose={handleCreateEvent} />
             </ModalOverlay>
             <div className="admincontentwrapper">
                 <div className="emptylistnon">

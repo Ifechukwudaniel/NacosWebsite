@@ -2,9 +2,9 @@ import ConfirmAlertHook from '@hooks/ConfirmAlertHook';
 import { motion } from 'framer-motion';
 import React from 'react';
 
-const AdminMaterialItem = (props:{title:string}) => {
+const AdminMaterialItem = (props:{_id:string,title:string, onDelete?:Function}) => {
     const handleClickDelete = ()=>{
-        console.log("delete")
+        props.onDelete(props._id)
     }
 
     return (

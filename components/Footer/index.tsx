@@ -4,7 +4,9 @@ const Footer = () => {
     return (
         <div className="footer">
             <div className="footercontent">
-            <div className="footerillustration"><img src="images/footerImage.png" loading="lazy" width="337" sizes="(max-width: 479px) 100vw, 337px" srcSet="images/footerImage-p-500.png 500w, images/footerImage-p-800.png 800w, images/footerImage-p-1080.png 1080w, images/footerImage.png 1131w" alt="" className="footerimage"/></div>
+            <div className="footerillustration">
+                <img src="/images/footerImage.png" loading="lazy" width="337" sizes="(max-width: 479px) 100vw, 337px" srcSet="/images/footerImage-p-500.png 500w, /images/footerImage-p-800.png 800w, /images/footerImage-p-1080.png 1080w, /images/footerImage.png 1131w" alt="" className="footerimage"/>
+                </div>
             <div className="footerlinks">
                 <h4 className="footertitle">Quick Links</h4>
                 <div className="looterlinkswrapper">

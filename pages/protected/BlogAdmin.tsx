@@ -6,6 +6,7 @@ import ProtectedTab from '@components/protected/ProtectedTab'
 import ModalOverlay from '@components/ModalOverlay'
 import { motion } from 'framer-motion'
 import BlogAdminItem from '@components/protected/AdminBlog/BlogAdminItem'
+import BlogAdminForm from '@components/protected/AdminBlog/BlogAdminForm'
 
 export default function BlogAdminPage() {
     const [ password , setPassword] = useState<string>("")
@@ -13,11 +14,22 @@ export default function BlogAdminPage() {
     const [open, setOpen] = useState(false)
     const router = useRouter()
 
+    const handleCreateBlog= (data)=>{
+        console.log(data)
+        setOpen(!open)
+    }
+
+    const handleEditBlog= (data)=>{
+        console.log(data)
+    }
+
     return (
     <div>
         <CustomHeader/>
         <ProtectedTab/>
-        <ModalOverlay onClose = {()=>setOpen(!open)} active={open} title="Add Blogs"/>
+        <ModalOverlay onClose = {()=>setOpen(!open)} active={open} title="Add Blogs">
+            <BlogAdminForm  handleClose={()=>setOpen(!open)} handleSubmit={handleCreateBlog} />
+        </ModalOverlay>
         <div className="admincontentwrapper">
             <div className="emptylistnon">
                     <img src="images/images.png" loading="lazy" alt="" className="calenderimage"/>
@@ -32,8 +44,8 @@ export default function BlogAdminPage() {
                     <motion.a  onClick={(e)=>{e.preventDefault(), setOpen(!open)}} whileHover={{opacity:0.8}} whileTap={{scale:1.1}}  className="createitembutton addimagebutton w-button">Add Blog<br/></motion.a>
                 </div>
                 <div className="blogadminwrapper">
-                    <BlogAdminItem/>
-                    <BlogAdminItem/>
+                    <BlogAdminItem htmlData="<p>sxssaxaxx</p>" title="Getting Scholarship Abroad.  The Fastest Way to Becoming a Scholar"  handleEditBlog={handleEditBlog} />
+                    <BlogAdminItem htmlData="<p>sxssaxaxx</p>" title="Getting Scholarship Abroad.  The Fastest Way to Becoming a Scholar" handleEditBlog={handleEditBlog}/>
                 </div>
             </div>
         </div>

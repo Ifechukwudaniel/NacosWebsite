@@ -12,11 +12,13 @@ import {
 } from 'framer-motion';
 import {isMobile} from 'react-device-detect';
 import  {Fragment} from 'react';
+import axios from 'axios';
+import { Event, IEvent } from '@models/Events';
 
 
 // import styles from '../styles/Home.module.css'
 
-export default function IndexPage() {
+export default function IndexPage(props:{events}) {
 
   const {  scrollYProgress } = useViewportScroll();
   const quoteScrollAnimationDesktop = useTransform(scrollYProgress, [0, 0.4], [0, 400]);
@@ -81,10 +83,11 @@ export default function IndexPage() {
                 <div className="eventlistwrapper">
                   <h1 className="eventtitle">Upcoming Events</h1>
                   <br/>
-                  <EventItemHome date={1} month={"Feb"} title="020 vs 022 Novelty match" />
-                  <EventItemHome date={19} month={"Jun"} title="020 vs 022 Novelty match"/>
-                  <EventItemHome date={1} month={"Jun"} title="020 vs 022 Novelty match"/>
-                  <EventItemHome date={1} month={"Jun"} title="020 vs 022 Novelty match"/>
+                  {
+                   props.events.slice(0,4).map((x,i)=>(
+                      <EventItemHome {...x} />
+                    ))
+                  }
                   <a href="/event" className="eventseemore">See More</a>
                 </div>
               </motion.div>
@@ -93,4 +96,11 @@ export default function IndexPage() {
         <Footer/>
     </Fragment>
   )
+}
+
+export async function getStaticProps() {
+  const events: IEvent[] = await (await axios.get(`${process.env.URL}/api/event`)).data
+  return {
+      props: {events},
+  };
 }

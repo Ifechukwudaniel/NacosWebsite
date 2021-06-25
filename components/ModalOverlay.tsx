@@ -20,7 +20,7 @@ const ModalOverlay = (props: {active :boolean ,title:string, onClose : any, chil
     let [loading, setLoading] = useState(true);
     let [color, setColor] = useState("#ffffff");
     return (
-        <motion.div style={{display:"block", }} initial="closed" animate={props.active ? "open" : "closed"} variants={variants} className="addcontentmodal">
+        <motion.div style={{display:"block", overflow:"scroll" }} initial="closed" animate={props.active ? "open" : "closed"} variants={variants} className="addcontentmodal">
             <div className="contentmodalclise">
             <motion.div  animate={{scale:0.8}} onClick={props.onClose} whileTap={{scale:1}}  className="addcontentclose w-inline-block">
                 <motion.img animate={{scale:1}} onClick={props.onClose} whileTap={{scale:1}}  src="/images/close.png" loading="lazy" alt="" className="deleteicon"/>

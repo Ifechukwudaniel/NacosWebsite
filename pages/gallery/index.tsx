@@ -1,3 +1,4 @@
+import GalleryItem from '@components/Gallary/GalleryItem'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -11,21 +12,35 @@ export default function GalleryPage() {
   return (
     <div>
     <PageHeader pageTitle={"Gallery"}/>
-    <div>
-    <div className="gallary">
-      <div className="gallarylist">
-        <motion.img animate={{y:[0, isMobile ? 0:20], opacity:[0,1]}} src="images/Frame-69.png" loading="lazy" alt="" className="gallaryimage"/>
-        <motion.img animate={{y:[0,isMobile ? 0:40], opacity:[0,1]}} src="images/Frame-69.png" loading="lazy" alt="" className="gallaryimage"/>
-        <motion.img animate={{y:[0,isMobile ? 0:60], opacity:[0,1]}} src="images/Frame-69.png" loading="lazy" alt="" className="gallaryimage"/>
-        
+      <div>
+        <div className="gallary">
+            <div className="gallarylist">
+                <GalleryItem/>
+                <GalleryItem/>
+                <GalleryItem/>
+            </div>
+            <div className="gallarylist">
+                <GalleryItem/>
+                <GalleryItem/>
+                <GalleryItem/>
+            </div>
+            <div className="gallarylist">
+                <GalleryItem/>
+                <GalleryItem/>
+                <GalleryItem/>
+            </div>
+            <div className="gallarylist">
+                <GalleryItem/>
+                <GalleryItem/>
+                <GalleryItem/>
+            </div>
+            <div className="gallarylist">
+                <GalleryItem/>
+                <GalleryItem/>
+                <GalleryItem/>
+            </div>
+        </div>
     </div>
-    <div className="gallarylist">
-        <motion.img animate={{y:[0,isMobile ? 0:20], opacity:[0,1]}} src="images/Frame-69.png" loading="lazy" alt="" className="gallaryimage"/>
-        <motion.img animate={{y:[0,isMobile ? 0:70], opacity:[0,1]}} src="images/Frame-69.png" loading="lazy" alt="" className="gallaryimage"/>
-        <motion.img animate={{y:[0,isMobile ? 0:50], opacity:[0,1]}} src="images/Frame-69.png" loading="lazy" alt="" className="gallaryimage"/>
-    </div>
-    </div>
-  </div>
     <Footer/>
   </div>   
   )

@@ -13,6 +13,7 @@ class MyDocument extends Document {
       <Html style={{width:"100%"}}>
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport"/>
+          <meta charSet="utf-8" />
           <link href="/static/css/normalize.css" rel="stylesheet" type="text/css"/>
           <link href="/static/css/webflow.css" rel="stylesheet" type="text/css"/>
           {/* <link href="static/css/styles.css" rel="stylesheet" type="text/css"/> */}
