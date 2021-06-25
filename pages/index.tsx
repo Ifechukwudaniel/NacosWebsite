@@ -98,7 +98,7 @@ export default function IndexPage(props:{events}) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const events: IEvent[] = await (await axios.get(`${process.env.URL}/api/event`)).data
   return {
       props: {events},

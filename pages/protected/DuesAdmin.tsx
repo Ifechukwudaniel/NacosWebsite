@@ -50,7 +50,7 @@ export default function DuesAdminPage(props:{payedDues}) {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
         const payedDues  = await (await axios.get(`${process.env.URL}/api/dues`)).data
         return {
             props: payedDues,

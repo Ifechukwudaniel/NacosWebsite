@@ -79,7 +79,7 @@ export default function MaterialAdminPage(props:{materials: IMaterial[]}) {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
         const materials: IMaterial[] = await (await axios(`${process.env.URL}/api/material`)).data
         return {
             props: {materials},
