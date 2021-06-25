@@ -46,7 +46,7 @@ const DuesAccordion = (props :{ open? :boolean,section:string, dues:IPayedDuesAc
                     <div  style={{width: "100%" }}>
                         {
                             props.dues.map((x, i)=>(
-                                <DuesItem key ={i}  {...x}/>
+                                <DuesItem key ={i} date={x.dues[i].date}  amount={x.dues[i].amount} user={x.dues[i].user}/>
                             ))
                         }
                     </div>

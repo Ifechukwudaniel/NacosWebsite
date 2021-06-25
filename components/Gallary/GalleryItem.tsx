@@ -5,7 +5,7 @@ import { isMobile } from 'react-device-detect';
 
 
 
-const GalleryItem = (props:{title:string}) => {
+const GalleryItem = (props:{title?:string}) => {
     const [open, setOpen] = useState(false)
     const imageOverlayVariants = {
         open:{

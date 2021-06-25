@@ -6,17 +6,20 @@ import htmlToDraft from 'html-to-draftjs';
 import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 
-class EditorConvertToHTML extends Component {
-    constructor(props) {
-        super(props);
-        console.log(props)
-        const html = props.htmlData||'<p></p>';
-        const contentBlock = htmlToDraft(html);
-        if (contentBlock) {
-            const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
-            const editorState = EditorState.createWithContent(contentState);
-            this.state = { editorState };
-        }
+
+interface IEditorConvertToHTML {
+    htmlData?: string;
+    handleChange?: Function;
+    img?: string;
+    instructions?: string;
+}
+
+interface IRecipeState {
+}
+class EditorConvertToHTML extends Component <IEditorConvertToHTML> {
+    state:{
+        editorState:any,
+        editor:false
     }
 
     onEditorStateChange: Function = (editorState) => {

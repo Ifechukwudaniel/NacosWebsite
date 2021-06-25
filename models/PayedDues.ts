@@ -9,18 +9,18 @@ export interface IPayedDues extends Document {
     user:string | ObjectId | IUser;
 }
 
-export interface IPayedDuesAccordion {
-    section:string,
-    dues:IPayedDuesItem[]
-}
-
 export interface IPayedDuesItem {
     date:Date;
     user: {
-        _id: string,
+        _id?: string,
         name: string
     },
     amount:number
+}
+
+export interface IPayedDuesAccordion {
+    section:string,
+    dues:IPayedDuesItem[]
 }
 
 
