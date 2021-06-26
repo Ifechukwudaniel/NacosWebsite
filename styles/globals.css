@@ -5178,6 +5178,7 @@ body {
     padding-top: 0%;
     padding-right: 0%;
     padding-left: 0%;
+    margin: auto;
     -webkit-box-pack: stretch;
     -webkit-justify-content: stretch;
     -ms-flex-pack: stretch;
