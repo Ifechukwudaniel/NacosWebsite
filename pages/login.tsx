@@ -52,7 +52,6 @@ const handlePasswordChange :React.ChangeEventHandler<HTMLInputElement> = (event)
               <img src="images/School.png" loading="lazy" width="384" alt="" className="homeilustration img signin mobile"/>
             </div>
             <h2 className="signuptext title">Welcome Back</h2>
-            <h5 className="signuptext text">Login to continue</h5>
             {
               error && isMobile && (
                   <div className="w-form-fail">
