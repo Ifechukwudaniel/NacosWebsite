@@ -24,6 +24,7 @@ export default NextAuth({
             user.image= user.userImage
             return user 
           } catch (error :  AxiosError | any ) {
+            console.log(error)
             if(!error.response.data.message) throw error
             error.message = error.response.data.message
             throw error
