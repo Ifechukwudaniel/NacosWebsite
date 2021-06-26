@@ -6,7 +6,7 @@ const BlogHomeList = (props:{blogs:IBlog[]}) => {
         <div className="blogwrapper">
             {
                 props.blogs.map((x, i)=>(
-                    <BlogItem/>
+                    <BlogItem title={x.title} blogImage={x.blogImage} slug={x.slug} date={x.date} />
                 ))
             }
         </div>

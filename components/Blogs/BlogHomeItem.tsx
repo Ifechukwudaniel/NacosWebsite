@@ -1,8 +1,10 @@
 import React, { useState , useEffect} from 'react';
 import { motion, useAnimation  } from "framer-motion"
 import { useInView } from 'react-intersection-observer';
+import { Blog, IBlog } from '@models/Blogs';
+import moment from 'moment';
 
-const BlogHomeItem = () => {
+const BlogHomeItem = (props :{ date:Date, title:string , blogImage:string, slug :string} ) => {
     const controls = useAnimation();
     const { ref,inView, entry } = useInView({
         threshold:[0, 1],
@@ -25,10 +27,10 @@ const BlogHomeItem = () => {
 
     return (
     <motion.div ref={ref} initial="hidden"  animate={isOpen ? "show" : "hidden"} variants={variants} className="blogitem _1">
-        <img src="images/blogImage.png" loading="lazy" width="345" alt="" className="blogimage"/>
+        <img src={`${props.blogImage}`} loading="lazy" width="345" alt="" className="blogimage"/>
             <div className="blogcontent">
-            <a href="/blogs/sjsjsjsj" className="blogtitle">Application for Advertised Course/ Staff form Request</a>
-            <div className="text-block-2">17th June 2021</div>
+            <a href={`/blogs/${props.slug}`} className="blogtitle">{props.title}</a>
+            <div className="text-block-2">{moment(props.date).format("DD MMMM YYYY")}</div>
             </div>
       </motion.div>
     );
