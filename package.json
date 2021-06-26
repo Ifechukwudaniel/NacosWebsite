@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start  --port $PORT"
+    "start": "next start  --port 3000"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^28.0.0",

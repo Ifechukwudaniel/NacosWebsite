@@ -7,8 +7,16 @@ import cheerio from 'cheerio';
 import imageUploadBase64 from "@utils/imageUploadBase64";
 import { User } from "@models/index";
 import {IUser} from '@models/User'
+import NextCors from 'nextjs-cors';
 
 export default async function loginPortal (req: NextApiRequest, res: NextApiResponse) {
+    await NextCors(req, res, {
+        // Options
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        origin: '*',
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    });
+
     if(req.method!=="POST") return  res.status(500).send({ status:500, message:" Request was not found"} )
     let {matricNumber, password} :{matricNumber:string , password:string} = req.body
     matricNumber =matricNumber.toUpperCase();
