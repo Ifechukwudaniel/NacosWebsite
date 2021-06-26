@@ -21,6 +21,7 @@ export default NextAuth({
           try {
             let path = `${process.env.NEXTAUTH_URL}/api/users/loginPortal`
             let {user}  = await (await axios.post(`${path}`,{matricNumber, password})).data
+            console.log(user)
             user.image= user.userImage
             return user 
           } catch (error :  AxiosError | any ) {
