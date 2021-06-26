@@ -29,6 +29,7 @@ const handlePasswordChange :React.ChangeEventHandler<HTMLInputElement> = (event)
     setLoading(true)
     signIn('credentials',{matricNumber, password, callbackUrl: `${window.location.origin}/` })
     .catch(err=>{
+      console.log(err)
       setLoading(false)
     })
   

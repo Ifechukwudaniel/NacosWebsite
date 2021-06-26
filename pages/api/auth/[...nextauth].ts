@@ -17,6 +17,7 @@ export default NextAuth({
         },
         async authorize(credentials : any, req: NextApiRequest) {
           const { matricNumber , password} : { matricNumber :string, password:string} = credentials
+          console.log(credentials)
           try {
             let path = `${process.env.NEXTAUTH_URL}/api/users/loginPortal`
             let {user}  = await (await axios.post(`${path}`,{matricNumber, password})).data
