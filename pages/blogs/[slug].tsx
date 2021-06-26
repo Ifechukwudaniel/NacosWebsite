@@ -40,11 +40,19 @@ export default function BlogItemPage(props: {currentBlog: IBlog, otherBlogs:IBlo
 
 
 export async function getServerSideProps(context) {
-  const blogs: IBlog[] = await (await axios.get(`${process.env.URL}/api/blog`)).data
-  let currentBlog  :IBlog=  blogs.filter((x)=> x.slug === context.query.slug  )[0]
-  let otherBlogs:IBlog[] =  blogs.filter((x)=> x.slug !== context.query.slug )
-
-  return {
-      props: {currentBlog, otherBlogs},
-  };
+  try {
+    const blogs: IBlog[] = await (await axios.get(`${process.env.URL}/api/blog`)).data
+    let currentBlog  :IBlog=  blogs.filter((x)=> x.slug === context.query.slug  )[0]
+    let otherBlogs:IBlog[] =  blogs.filter((x)=> x.slug !== context.query.slug )
+    
+    if(!currentBlog) throw Error
+    return {
+        props: {currentBlog, otherBlogs},
+    };
+    
+  } catch (error) {
+    context.res.statusCode = 302
+    context.res.setHeader('Location', `/blogs`) // Replace <link> with your url link
+    // return {props: {}}
+  }
 }

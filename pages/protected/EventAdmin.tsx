@@ -13,6 +13,7 @@ import {NotificationManager} from 'react-notifications';
 import "react-datepicker/dist/react-datepicker.css";
 import AdminEventForm from '@components/protected/AdminEvent/AdminEventForm'
 import addDays from '@utils/addDays'
+import variables from '@utils/variables'
 
 export default function EventAdminPage(props: {
     events:IEvent[]
@@ -30,7 +31,7 @@ export default function EventAdminPage(props: {
             setLoadingText("Creating Event")
             setLoading(true)
             console.log(data)
-            await axios.post(`http://localhost:3000/api/event/createEvent`,{
+            await axios.post(`${variables.url}/api/event/createEvent`,{
                 title:data.title, 
                 description:data.description,
                 date:data.date
@@ -49,7 +50,7 @@ export default function EventAdminPage(props: {
     const handleDelete = async (id)=>{
         try {
             setLoadingText("Deleting Event"), setLoading(true)
-            await axios.post(`http://localhost:3000/api/event/delete`,{id})
+            await axios.post(`${variables.url}/api/event/delete`,{id})
             setPageEvent(pageEvents.filter(x=>x._id!==id))
             return setLoading(false)
         } catch (error) {

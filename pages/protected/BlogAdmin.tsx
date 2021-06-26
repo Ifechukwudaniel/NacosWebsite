@@ -10,6 +10,7 @@ import BlogAdminForm from '@components/protected/AdminBlog/BlogAdminForm'
 import { IBlog } from '@models/Blogs'
 import axios from 'axios'
 import {NotificationManager} from 'react-notifications';
+import variables from '@utils/variables'
 
 
 export default function BlogAdminPage(props:{blogs:IBlog[]}) {
@@ -27,7 +28,7 @@ export default function BlogAdminPage(props:{blogs:IBlog[]}) {
             setLoadingText("Creating Event")
             setLoading(true)
             console.log(data)
-            await axios.post(`http://localhost:3000/api/blog/createBlog`,{...data})
+            await axios.post(`${variables.url}/api/blog/createBlog`,{...data})
             setPageBlogs([...pageBlogs, data])
             NotificationManager.success("Created Event");
             return setOpen(!open)

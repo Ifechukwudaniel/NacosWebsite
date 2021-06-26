@@ -11,37 +11,43 @@ import axios from 'axios'
 import ModalOverlay from '@components/ModalOverlay'
 import MaterialForm from '@components/protected/AdminMaterial/MaterialForm'
 import {NotificationManager} from 'react-notifications';
+import LoadingOverlay from '@components/LoadingOverlay'
+import variables from '@utils/variables'
+
 
 export default function MaterialAdminPage(props:{materials: IMaterial[]}) {
     const [pageMaterial,setPageMaterial] = useState(props.materials)
     const [ loadingText, setLoadingText] = useState<string>("")
     const [loading, setLoading] = useState(false)
     const [open, setOpen] = useState(false)
-    const router = useRouter()
+    const {reload , pathname} = useRouter()
 
     const handleCreate =  async (data)=>{
         try {
             setLoadingText("Creating Material")
             setLoading(true)
             data.fileLink ="nsnx"
-            await axios.post(`http://localhost:3000/api/material/createMaterial`,{
+            await axios.post(`${variables.url}/api/material/createMaterial`,{
                 title:data.title, base64File:data.file,fileLink:"jjj"
             })
             setPageMaterial([...pageMaterial, data])
-            NotificationManager.success("Created Event");
+            NotificationManager.success("Created Material");
             return setOpen(!open)
         } catch (error) {
             setLoading(false)
+            return setOpen(!open)
         }
     }
 
     const handleDelete = async (id)=>{
         try {
             setLoadingText("Deleting Material"), setLoading(true)
-            await axios.post(`http://localhost:3000/api/material/delete`,{id})
+            await axios.post(`${variables.url}/api/material/delete`,{id})
             setPageMaterial(pageMaterial.filter(x=>x._id!==id))
             return NotificationManager.success("Deleted Material");
+            reload()
         } catch (error) {
+            reload()
             setLoading(false)
         }
     }
@@ -49,6 +55,7 @@ export default function MaterialAdminPage(props:{materials: IMaterial[]}) {
         <div>
             <CustomHeader/>
             <ProtectedTab/>
+            <LoadingOverlay active={loading} text={loadingText}/>
             <ModalOverlay onClose = {()=>setOpen(!open)} active={open} title="Add Materials">
                 <MaterialForm handleSubmit={handleCreate} />
             </ModalOverlay>
