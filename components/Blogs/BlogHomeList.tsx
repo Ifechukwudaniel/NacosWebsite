@@ -1,12 +1,14 @@
+import { Blog , IBlog} from '@models/Blogs';
 import React from 'react';
 import BlogItem from './BlogHomeItem';
-
-const BlogHomeList = ({}) => {
+const BlogHomeList = (props:{blogs:IBlog[]}) => {
     return (
         <div className="blogwrapper">
-            <BlogItem/>
-            <BlogItem/>
-            <BlogItem/>
+            {
+                props.blogs.map((x, i)=>(
+                    <BlogItem/>
+                ))
+            }
         </div>
     );
 }
