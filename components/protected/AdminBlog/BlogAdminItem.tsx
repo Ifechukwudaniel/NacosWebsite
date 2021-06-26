@@ -16,7 +16,7 @@ const BlogAdminItem = (props:{_id?:string, blogImage?:string, handleEditBlog:Fun
     return (
         <div className="blogadminitem">
             <ModalOverlay onClose={()=>setEdit(!edit)} title="Edit Blog" active={edit}>
-                <BlogAdminForm htmlData={props.htmlData} title={props.title}  handleClose={()=>setEdit(!edit)} handleSubmit={props.handleEditBlog} edit={edit}/>
+                <BlogAdminForm htmlData={props.htmlData} title={props.title}  handleClose={()=>setEdit(!edit)} handleSubmit={props.handleEditBlog} edit={true}/>
             </ModalOverlay>
             <img src={`${props.blogImage}`} loading="lazy" alt="" className="blogadminimage"/>
             <div style={{marginLeft:30}} className="blogadmintitlewrapper">

@@ -5,9 +5,10 @@ import { useState } from 'react';
 import WYSIWYGCKEditor from '@components/WYSIWYGCKEditor';
 
 const BlogAdminForm = (props: {htmlData ?: string,title?:string, description?:string, handleClose?: Function, handleSubmit? :Function, edit? : boolean }) => {
-    const [title, setTitle]= useState(props.title)
+    const [title, setTitle]= useState(props.title ||"")
     const [image, setImage ] = useState("")
-    const [htmlData, setHtmlData] = useState("")
+    const [htmlData, setHtmlData] = useState(props.htmlData || "")
+    console.log(props)
 
     const handleChange= (editorState)=>{
         setHtmlData(editorState)
@@ -17,7 +18,7 @@ const BlogAdminForm = (props: {htmlData ?: string,title?:string, description?:st
         setImage(x)
     }
     const handleSubmit = ()=>{
-        if(!image.length)  return alert("There is no image")
+        if(!props.edit && !image.length)  return alert("There is no image")
         if(!title)  return alert("There is no title")
         if(!htmlData)  return alert("There is blogContent")
         return props.handleSubmit({title, image, htmlData})
