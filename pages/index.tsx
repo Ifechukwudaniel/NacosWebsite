@@ -14,11 +14,13 @@ import {isMobile} from 'react-device-detect';
 import  {Fragment} from 'react';
 import axios from 'axios';
 import { Event, IEvent } from '@models/Events';
+import { Blog, IBlog } from '@models/Blogs';
 
 
 // import styles from '../styles/Home.module.css'
 
-export default function IndexPage(props:{events}) {
+export default function IndexPage(props:{events, blogs}) {
+  console.log(props)
 
   const {  scrollYProgress } = useViewportScroll();
   const quoteScrollAnimationDesktop = useTransform(scrollYProgress, [0, 0.4], [0, 400]);
@@ -48,7 +50,7 @@ export default function IndexPage(props:{events}) {
                     <h1 className="welcometext">B.I.U Chapter</h1>
                   </div>
                   <div className="subwelcome">
-                    <div className="welcometextdescription">Lorem ipsum dolor sit amet, consectetur<br/> adipiscing elit, sed do eiusmod tempor<br/> incididunt</div>
+                    <div className="welcometextdescription"> Welcome To The Great BIU Nacosite website  <br/> For Nacos By Nacos</div>
                   </div>
                   <div className="callaction">
                     <a data-w-id="89181162-243f-8487-f13e-29f945726900" href="#" className="buttonexploere w-inline-block">
@@ -73,7 +75,7 @@ export default function IndexPage(props:{events}) {
               </div>
             </div>
             <div className="blogwrapper">
-              <BlogList/>
+              <BlogList blogs= {props.blogs} />
             </div>
             </div>
             <div className="events">
@@ -95,12 +97,14 @@ export default function IndexPage(props:{events}) {
           </div>
         <Footer/>
     </Fragment>
-  )
+    )
 }
 
 export async function getServerSideProps() {
   const events: IEvent[] = await (await axios.get(`${process.env.URL}/api/event`)).data
+  let blogs: IBlog[] = await (await axios.get(`${process.env.URL}/api/blog`)).data
+  blogs = blogs.slice(0,4)
   return {
-      props: {events},
+      props: {events, blogs},
   };
 }

@@ -1282,7 +1282,8 @@ body {
 }
 
 .blogpageitem {
-  width: 98%;
+  width: 90%;
+  margin: auto;
   margin-bottom: 5%;
   background-color: #25292f;
 }

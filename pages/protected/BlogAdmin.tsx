@@ -7,16 +7,33 @@ import ModalOverlay from '@components/ModalOverlay'
 import { motion } from 'framer-motion'
 import BlogAdminItem from '@components/protected/AdminBlog/BlogAdminItem'
 import BlogAdminForm from '@components/protected/AdminBlog/BlogAdminForm'
+import { IBlog } from '@models/Blogs'
+import axios from 'axios'
+import {NotificationManager} from 'react-notifications';
 
-export default function BlogAdminPage() {
+
+export default function BlogAdminPage(props:{blogs:IBlog[]}) {
     const [ password , setPassword] = useState<string>("")
     const [loading, setLoading] = useState(false)
+    const [pageBlogs, setPageBlogs] = useState<IBlog[]>(props.blogs||[])
     const [open, setOpen] = useState(false)
+    const [loadingText, setLoadingText] =useState("")
+    
+
     const router = useRouter()
 
-    const handleCreateBlog= (data)=>{
-        console.log(data)
-        setOpen(!open)
+    const handleCreateBlog =  async (data)=>{
+        try {
+            setLoadingText("Creating Event")
+            setLoading(true)
+            console.log(data)
+            await axios.post(`http://localhost:3000/api/blog/createBlog`,{...data})
+            setPageBlogs([...pageBlogs, data])
+            NotificationManager.success("Created Event");
+            return setOpen(!open)
+        } catch (error) {
+            setLoading(false)
+        }
     }
 
     const handleEditBlog= (data)=>{
@@ -39,16 +56,27 @@ export default function BlogAdminPage() {
             <div className="gallarycontent">
                 <div className="addimagewrapper">
                     <div className="blogadmintitlewrapper">
-                        <h1 className="editadmintitle">Current Posts</h1>
+                        <h1 className="editadmintitle">Current Blog</h1>
                     </div>
                     <motion.a  onClick={(e)=>{e.preventDefault(), setOpen(!open)}} whileHover={{opacity:0.8}} whileTap={{scale:1.1}}  className="createitembutton addimagebutton w-button">Add Blog<br/></motion.a>
                 </div>
                 <div className="blogadminwrapper">
-                    <BlogAdminItem htmlData="<p>sxssaxaxx</p>" title="Getting Scholarship Abroad.  The Fastest Way to Becoming a Scholar"  handleEditBlog={handleEditBlog} />
-                    <BlogAdminItem htmlData="<p>sxssaxaxx</p>" title="Getting Scholarship Abroad.  The Fastest Way to Becoming a Scholar" handleEditBlog={handleEditBlog}/>
+                    {
+                        pageBlogs.map((x,i)=>(
+                            <BlogAdminItem blogImage={x.blogImage}  _id={x._id} htmlData={x.content} title={x.title}  handleEditBlog={handleEditBlog} />
+                        ))
+                    }
                 </div>
             </div>
         </div>
     </div>    
     )
+}
+
+
+export async function getServerSideProps() {
+    const blogs: IBlog[] = await (await axios.get(`${process.env.URL}/api/blog`)).data
+    return {
+        props: {blogs},
+    };
 }

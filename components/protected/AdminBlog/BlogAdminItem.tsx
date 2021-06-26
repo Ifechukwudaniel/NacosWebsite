@@ -6,11 +6,11 @@ import { useState } from 'react';
 import BlogAdminForm from './BlogAdminForm';
 
 
-const BlogAdminItem = (props:{handleEditBlog:Function, title:string, htmlData:string}) => {
+const BlogAdminItem = (props:{_id?:string, blogImage?:string, handleEditBlog:Function, title:string, htmlData:string}) => {
     const [edit , setEdit] = useState(false)
 
     const handleClickDelete = ()=>{
-        console.log("delete")
+        console.log(props._id)
     }
 
     return (
@@ -18,9 +18,9 @@ const BlogAdminItem = (props:{handleEditBlog:Function, title:string, htmlData:st
             <ModalOverlay onClose={()=>setEdit(!edit)} title="Edit Blog" active={edit}>
                 <BlogAdminForm htmlData={props.htmlData} title={props.title}  handleClose={()=>setEdit(!edit)} handleSubmit={props.handleEditBlog} edit={edit}/>
             </ModalOverlay>
-            <img src="/images/galary.png" loading="lazy" alt="" className="blogadminimage"/>
+            <img src={`${props.blogImage}`} loading="lazy" alt="" className="blogadminimage"/>
             <div style={{marginLeft:30}} className="blogadmintitlewrapper">
-                <h1 className="blogtitle admin">Getting Scholarship Abroad.  The Fastest Way <br/>to Becoming a Scholar</h1>
+                <h1 className="blogtitle admin">{props.title}</h1>
             </div>
             <motion.div onClick={()=>setEdit(!edit)} whileTap={{scale:0.7}}  className="blogadminedit"><img src="/images/edit_1.png" loading="lazy" alt="" className="editicon"/>
                 <div className="edittext">Edit</div>

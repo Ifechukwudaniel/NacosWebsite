@@ -4,6 +4,7 @@ import slug from 'mongoose-slug-generator'
 export interface IBlog extends Document {
     date:Date;
     title:string,
+    slug: string,
     content:string,
     blogImage: string
 }
@@ -33,7 +34,6 @@ const BlogSchema: Schema = new Schema({
         type:String,
         required:true 
     }
-    
 });
 
 export const Blog : Model<IBlog> = mongoose.models.Blog || model("Blog", BlogSchema)
